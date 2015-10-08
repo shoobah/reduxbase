@@ -1,9 +1,12 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import Number from './number'
 
 export default ({content}) => (
-  <ul>
+  <ul style={{listStyle:'none'}}>
     {content.map((item, index) => (
-      <li key={index}>{item}</li>
+      <li key={index}>
+        <Number value={item} />
+      </li>
     ))}
   </ul>
 )
