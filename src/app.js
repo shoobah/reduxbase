@@ -10,7 +10,7 @@ class App extends Component {
   }
 
   handleClick(){
-    this.props.randomize(250);
+    this.props.randomize(20);
   }
 
   render() {
@@ -44,4 +44,6 @@ function mapDispatchToProps(dispatch){
   }
 }
 
+//Redux: connect ser till att vår komponent, App, är en "smart" komponent som lyssnar på om
+//det händer något i vår store.
 export default connect(mapStateToProps, mapDispatchToProps)(App)
