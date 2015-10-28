@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   handleClick(){
-    this.iObj=setInterval(()=>{this.props.randomize(30)},10);
+    this.props.randomize(30);
   }
   
   handleStopClick(){
