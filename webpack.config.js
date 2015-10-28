@@ -18,9 +18,12 @@ module.exports = {
   ],
   module: {
     loaders: [{
-      test: /\.js$/,
+      test: /\.js[x]?$/,
       loaders: ['react-hot', 'babel'],
       include: path.join(__dirname, 'src')
     }]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
   }
 };

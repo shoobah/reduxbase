@@ -6,11 +6,19 @@ import List from './list'
 
 class App extends Component {
   constructor( props) {
-    super(props)
+    super(props),
+    this.iObj= {}
   }
 
   handleClick(){
-    this.props.randomize(20);
+    this.iObj=setInterval(()=>{this.props.randomize(30)},10);
+  }
+  
+  handleStopClick(){
+    clearInterval(this.iObj);
+  }
+
+  componentDidMount(){
   }
 
   render() {
@@ -20,7 +28,8 @@ class App extends Component {
     }
     let tag =  <div style={style}>
                   <h1>Slumpa nummer</h1>
-                  <button onClick={this.handleClick.bind(this)} >Slumpa!</button><br/>
+                  <button onClick={this.handleClick.bind(this)} >Go!!</button><br/>
+                  <button onClick={this.handleStopClick.bind(this)} >Make it stop!</button><br/>
                   <List content={this.props.state.list} />
                 </div>
     console.timeEnd('render') //Skriver ut förfluten tid till konsollen (F12) för timern med samma namn
