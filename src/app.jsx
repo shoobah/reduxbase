@@ -11,11 +11,17 @@ class App extends Component {
   }
 
   handleClick(){
+    clearInterval(this.iObj);
     this.iObj=setInterval(()=>{this.props.randomize(30)},10);
   }
-  
+
   handleStopClick(){
     clearInterval(this.iObj);
+  }
+
+  handleJavelnClick() {
+    clearInterval(this.iObj);
+    this.iObj=setInterval(()=>{this.props.randomize(10)},50);
   }
 
   componentDidMount(){
@@ -30,6 +36,7 @@ class App extends Component {
                   <h1>Slumpa nummer</h1>
                   <button onClick={this.handleClick.bind(this)} >Go!!</button><br/>
                   <button onClick={this.handleStopClick.bind(this)} >Make it stop!</button><br/>
+                  <button onClick={this.handleJavelnClick.bind(this)} >Knapp Javeln!</button><br/>
                   <List content={this.props.state.list} />
                 </div>
     console.timeEnd('render') //Skriver ut förfluten tid till konsollen (F12) för timern med samma namn

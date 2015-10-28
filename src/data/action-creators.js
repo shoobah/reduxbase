@@ -7,3 +7,10 @@ export function randomize(length){
     length //om posten i objektet har samma namn som den tilldelade variabeln behöver man inte speca det
   }
 }
+export const CLEANIT = 'CLEANIT'
+export function cleanit(lenght) {
+  return {
+    type: CLEANIT,
+    lenght
+  }
+}

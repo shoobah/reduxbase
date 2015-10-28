@@ -23,6 +23,14 @@ function reducer (state = initialState, action) {
         list: newList
       })
       break
+    case CLEANIT:
+      let cleanList = []
+      for(let i = 0; i < action.length; i++) {
+        cleanList.push(25)
+      }
+      return Object.assign({}, state, {
+        list: cleanList
+      })
     default: //Om ingen action signalerats ska man returnera samma state som kom in som argument
       return state
   }
