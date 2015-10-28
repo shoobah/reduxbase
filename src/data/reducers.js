@@ -5,7 +5,7 @@ const initialState = {
   list: []
 }
 
-//Redux: en reducer är en funktion som tar state och action och returnerar en ny state beroende på vilken action
+//Redux: en reducer är en (ren)funktion som tar state och action och returnerar en ny state beroende på vilken action
 //som ska utföras på den
 //man kan ange default värden i funktioner, här används det för att vi ska få initialState som startvärde på state när
 //applikationen startas.
