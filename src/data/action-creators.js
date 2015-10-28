@@ -7,3 +7,11 @@ export function randomize(length){
     length //om posten i objektet har samma namn som den tilldelade variabeln behöver man inte speca det
   }
 }
+
+export const HIGHER = 'HIGHER'
+export function higher(min, max){
+  return {
+    type: HIGHER,
+    value: {min, max}
+  }
+}

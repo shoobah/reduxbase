@@ -1,5 +1,5 @@
 
-import { RANDOMIZE } from './action-creators'
+import { RANDOMIZE, HIGHER } from './action-creators'
 // Redux utility functions
 import { compose, createStore, applyMiddleware } from 'redux';
 // Redux DevTools store enhancers
@@ -18,17 +18,36 @@ const initialState = {
 function reducer (state = initialState, action) {
   //vår action som definierats i action-creators skickar med typen RANDOMIZE och ett värde på hur många
   //värden som ska slumpas
+  let newList = [];
+
   switch (action.type) {
     case RANDOMIZE:
       let giveMeRandom = () => (Math.round(Math.random() * 1000))
-      let newList = []
+
       for (let i = 0; i < action.length; i++) {
         newList.push(giveMeRandom())
       }
       return Object.assign({}, state, {
         list: newList
       })
-      break
+      break;
+    case HIGHER:
+      for (let i = 0; i < 10; i++) {
+
+        let giveValue = () => (Math.round(Math.random() * action.value.max));
+
+        if(i !== 0){
+          var nextValue = newList[i-1] + giveValue();
+          newList.push(nextValue);
+        } else {
+        newList.push(giveValue());
+        }
+
+      }
+      return Object.assign({}, state, {
+        list: newList
+      })
+    break;
     default: //Om ingen action signalerats ska man returnera samma state som kom in som argument
       return state
   }

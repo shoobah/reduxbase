@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { randomize } from './data/action-creators'
+import { randomize, higher } from './data/action-creators'
 import Number from './number'
 import List from './list'
 
@@ -13,7 +13,9 @@ class App extends Component {
 
   handleClick(){
     if(!this.buttonPressed) {
-      this.iObj=setInterval(()=>{this.props.randomize(10)},100);
+      this.iObj=setInterval(()=>{this.props.higher(0, 100)},100);
+
+      //this.props.higher(0, 10);
       this.buttonPressed = true;
     }
   }
@@ -56,7 +58,8 @@ function mapStateToProps(state){
 //till vår store, via action-creators, att vi vill slumpa nya värden
 function mapDispatchToProps(dispatch){
   return {
-    randomize: (length) => dispatch(randomize(length))
+    randomize: (length) => dispatch(randomize(length)),
+    higher: (min, max) => dispatch(higher(min, max))
   }
 }
 
