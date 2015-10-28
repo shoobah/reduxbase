@@ -1,5 +1,11 @@
-import { createStore } from 'redux'
+
 import { RANDOMIZE } from './action-creators'
+// Redux utility functions
+import { compose, createStore, applyMiddleware } from 'redux';
+// Redux DevTools store enhancers
+import { devTools, persistState } from 'redux-devtools';
+// React components for Redux DevTools
+import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 
 const initialState = {
   list: []
@@ -28,4 +34,14 @@ function reducer (state = initialState, action) {
   }
 }
 
-export default createStore(reducer)
+const finalCreateStore = compose(
+  // Enables your middleware: // any Redux middleware, e.g. redux-thunk
+  // Provides support for DevTools:
+  devTools(),
+  // Lets you write ?debug_session=<name> in address bar to persist debug sessions
+  persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+)(createStore);
+
+export default finalCreateStore(reducer);
+
+//export default createStore(reducer)

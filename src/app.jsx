@@ -8,14 +8,21 @@ class App extends Component {
   constructor( props) {
     super(props),
     this.iObj= {}
+    this.buttonPressed = false;
   }
 
   handleClick(){
-    this.iObj=setInterval(()=>{this.props.randomize(30)},10);
+    if(!this.buttonPressed) {
+      this.iObj=setInterval(()=>{this.props.randomize(10)},100);
+      this.buttonPressed = true;
+    }
   }
-  
+
   handleStopClick(){
-    clearInterval(this.iObj);
+    if(this.buttonPressed) {
+      clearInterval(this.iObj);
+      this.buttonPressed = false;
+    }
   }
 
   componentDidMount(){
