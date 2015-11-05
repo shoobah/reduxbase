@@ -1,5 +1,7 @@
-import { createStore } from 'redux'
 import { RANDOMIZE } from './action-creators'
+import {compose, createStore, applyMiddelware} from 'redux'
+import {devTools, persistState} from 'redux-devtools'
+import {DevTools, DebugPanel, LogMonitor} from 'redux-devtools/lib/react'
 
 const initialState = {
   list: []
@@ -29,7 +31,7 @@ function reducer (state = initialState, action) {
       let newList = []
       for (let i = 0; i < action.length; i++) {
         newList.push({
-          value:getRandomValue(1000),
+          value:getRandomValue(10000),
           color:randomColor()
         })
       }
@@ -42,4 +44,9 @@ function reducer (state = initialState, action) {
   }
 }
 
-export default createStore(reducer)
+const finalCreateStore = compose (
+  devTools(),
+  persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+)(createStore)
+
+export default finalCreateStore(reducer)

@@ -22,7 +22,6 @@ class App extends Component {
   }
 
   render() {
-    console.time('render') //Sparar undan starttid för det man vill mäta tiden på
     let style={
       fontFamily: 'arial'
     }
@@ -32,7 +31,6 @@ class App extends Component {
                   <button onClick={this.handleStopClick.bind(this)} >Make it stop!</button><br/>
                   <List content={this.props.state.list} />
                 </div>
-    console.timeEnd('render') //Skriver ut förfluten tid till konsollen (F12) för timern med samma namn
     return tag;
   }
 }
