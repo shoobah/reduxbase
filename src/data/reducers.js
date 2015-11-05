@@ -4,7 +4,8 @@ import {devTools, persistState} from 'redux-devtools'
 import {DevTools, DebugPanel, LogMonitor} from 'redux-devtools/lib/react'
 
 const initialState = {
-  list: []
+  list: [],
+  type: 'listjävel'
 }
 
 function getRandomValue (max) {
