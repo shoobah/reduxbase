@@ -5,6 +5,18 @@ const initialState = {
   list: []
 }
 
+function getRandomValue (max) {
+  return Math.round(Math.random() * max)
+}
+
+function randomColor () {
+  let r = getRandomValue(256)
+  let g = getRandomValue(256)
+  let b = getRandomValue(256)
+  return 'rgba(' + r + ', ' + g + ', ' + b + ', 1' + ')'
+}
+
+
 //Redux: en reducer är en (ren)funktion som tar state och action och returnerar en ny state beroende på vilken action
 //som ska utföras på den
 //man kan ange default värden i funktioner, här används det för att vi ska få initialState som startvärde på state när
@@ -14,10 +26,12 @@ function reducer (state = initialState, action) {
   //värden som ska slumpas
   switch (action.type) {
     case RANDOMIZE:
-      let giveMeRandom = () => (Math.round(Math.random() * 1000))
       let newList = []
       for (let i = 0; i < action.length; i++) {
-        newList.push(giveMeRandom())
+        newList.push({
+          value:getRandomValue(1000),
+          color:randomColor()
+        })
       }
       return Object.assign({}, state, {
         list: newList
