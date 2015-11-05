@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { randomize } from './data/action-creators'
 import Number from './number'
 import List from './list'
+import MdAssessment from 'react-icons/lib/md/assessment'
 
 class App extends Component {
   constructor( props) {
@@ -27,8 +28,7 @@ class App extends Component {
     }
     let tag =  <div style={style}>
                   <h1>Slumpa nummer</h1>
-                  <button onClick={this.handleClick.bind(this)} >Go!!</button><br/>
-                  <button onClick={this.handleStopClick.bind(this)} >Make it stop!</button><br/>
+                  <span onClick={this.handleClick.bind(this)} ><MdAssessment width={40} height={40} style={{fill:'lime'}} /></span><br/>
                   <List content={this.props.state.list} />
                 </div>
     return tag;
