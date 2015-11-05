@@ -40,6 +40,8 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "core-js": "^1.2.5",
+    "lodash": "^3.10.1",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-icons": "^0.1.4",
