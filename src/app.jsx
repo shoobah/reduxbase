@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { randomize } from './data/action-creators'
+import { randomize, cleanit, greyit } from './data/action-creators'
 import Number from './number'
 import List from './list'
 
@@ -21,7 +21,12 @@ class App extends Component {
 
   handleJavelnClick() {
     clearInterval(this.iObj);
-    this.iObj=setInterval(()=>{this.props.randomize(10)},50);
+    this.iObj=setInterval(()=>{this.props.cleanit(10)},500);
+  }
+
+  handleGreyClick() {
+    clearInterval(this.iObj);
+    this.iObj=setInterval(()=>{this.props.greyit(10)},500);
   }
 
   componentDidMount(){
@@ -36,7 +41,8 @@ class App extends Component {
                   <h1>Slumpa nummer</h1>
                   <button onClick={this.handleClick.bind(this)} >Go!!</button><br/>
                   <button onClick={this.handleStopClick.bind(this)} >Make it stop!</button><br/>
-                  <button onClick={this.handleJavelnClick.bind(this)} >Knapp Javeln!</button><br/>
+                  <button onClick={this.handleJavelnClick.bind(this)} >Knapp Jäveln!</button><br/>
+                  <button onClick={this.handleGreyClick.bind(this)} >Knapp Grå!</button><br/>
                   <List content={this.props.state.list} />
                 </div>
     console.timeEnd('render') //Skriver ut förfluten tid till konsollen (F12) för timern med samma namn
@@ -56,7 +62,9 @@ function mapStateToProps(state){
 //till vår store, via action-creators, att vi vill slumpa nya värden
 function mapDispatchToProps(dispatch){
   return {
-    randomize: (length) => dispatch(randomize(length))
+    randomize: (length) => dispatch(randomize(length)),
+    cleanit: (length) => dispatch(cleanit(length)),
+    greyit: (length) => dispatch(greyit(length))
   }
 }
 

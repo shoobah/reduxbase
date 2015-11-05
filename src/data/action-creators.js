@@ -8,9 +8,17 @@ export function randomize(length){
   }
 }
 export const CLEANIT = 'CLEANIT'
-export function cleanit(lenght) {
+export function cleanit(length) {
   return {
     type: CLEANIT,
-    lenght
+    length
+  }
+}
+
+export const GREYIT = 'GREYIT'
+export function greyit() {
+  return {
+    type: GREYIT,
+    length
   }
 }

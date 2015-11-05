@@ -1,8 +1,9 @@
 import { createStore } from 'redux'
-import { RANDOMIZE } from './action-creators'
+import { RANDOMIZE, CLEANIT, GREYIT } from './action-creators'
 
 const initialState = {
-  list: []
+  list: [],
+  colors: []
 }
 
 //Redux: en reducer är en (ren)funktion som tar state och action och returnerar en ny state beroende på vilken action
@@ -26,11 +27,14 @@ function reducer (state = initialState, action) {
     case CLEANIT:
       let cleanList = []
       for(let i = 0; i < action.length; i++) {
-        cleanList.push(25)
+        cleanList.push(1000)
       }
       return Object.assign({}, state, {
         list: cleanList
       })
+    case GREYIT:
+      let colors = []
+
     default: //Om ingen action signalerats ska man returnera samma state som kom in som argument
       return state
   }
