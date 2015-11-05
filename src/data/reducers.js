@@ -1,4 +1,4 @@
-import { RANDOMIZE } from './action-creators'
+import { RANDOMIZE, SORTLIST } from './action-creators'
 import {compose, createStore, applyMiddelware} from 'redux'
 import {devTools, persistState} from 'redux-devtools'
 import {DevTools, DebugPanel, LogMonitor} from 'redux-devtools/lib/react'
@@ -27,6 +27,7 @@ function randomColor () {
 function reducer (state = initialState, action) {
   //vår action som definierats i action-creators skickar med typen RANDOMIZE och ett värde på hur många
   //värden som ska slumpas
+  console.log('Reducer ', action)
   switch (action.type) {
     case RANDOMIZE:
       let newList = []
@@ -36,15 +37,20 @@ function reducer (state = initialState, action) {
           color:randomColor()
         })
       }
-      newList.sort((a, b) => {
-        if(a.value > b.value) return -1
-        if(a.value === b.value) return 0
-        if(a.value < b.value) return 1
-      })
       return Object.assign({}, state, {
         list: newList
       })
       break
+    case SORTLIST:
+      console.log('SORTLIST')
+      return Object.assign({}, {
+        list:state.list.sort((a, b) => {
+          if(a.value > b.value) return -1
+          if(a.value === b.value) return 0
+          if(a.value < b.value) return 1
+        })
+      })
+    break
     default: //Om ingen action signalerats ska man returnera samma state som kom in som argument
       return state
   }

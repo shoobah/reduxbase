@@ -7,3 +7,11 @@ export function randomize(length){
     length //om posten i objektet har samma namn som den tilldelade variabeln behöver man inte speca det
   }
 }
+
+export const SORTLIST = 'SORTLIST' //Man brukar använda konstanter för att tala om typen på en action.
+export function sortList(){
+  console.log('Action sort')
+  return {
+    type: SORTLIST
+  }
+}

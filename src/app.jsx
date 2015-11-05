@@ -1,22 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { randomize } from './data/action-creators'
+import { randomize, sortList } from './data/action-creators'
 import Number from './number'
 import List from './list'
-import MdAssessment from 'react-icons/lib/md/assessment'
+import {MdAssessment, MdSort} from 'react-icons/lib/md'
 
 class App extends Component {
   constructor( props) {
-    super(props),
-    this.iObj= {}
+    super(props)
   }
 
   handleClick(){
     this.props.randomize(30);
   }
   
-  handleStopClick(){
-    clearInterval(this.iObj);
+  handleSortClick(){
+    this.props.sortList();
   }
 
   componentDidMount(){
@@ -28,7 +27,8 @@ class App extends Component {
     }
     let tag =  <div style={style}>
                   <h1>Slumpa nummer</h1>
-                  <span onClick={this.handleClick.bind(this)} ><MdAssessment width={40} height={40} style={{fill:'lime'}} /></span><br/>
+                  <span onClick={this.handleClick.bind(this)} ><MdAssessment width={40} height={40} style={{fill:'#333'}} /></span>
+                  <span onClick={this.handleSortClick.bind(this)} ><MdSort width={40} height={40} style={{fill:'#333'}} /></span><br/>
                   <List content={this.props.state.list} />
                 </div>
     return tag;
@@ -47,7 +47,8 @@ function mapStateToProps(state){
 //till vår store, via action-creators, att vi vill slumpa nya värden
 function mapDispatchToProps(dispatch){
   return {
-    randomize: (length) => dispatch(randomize(length))
+    randomize: (length) => dispatch(randomize(length)),
+    sortList: () => dispatch(sortList())
   }
 }
 
