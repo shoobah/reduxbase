@@ -31,7 +31,7 @@ function reducer (state = initialState, action) {
       let newList = []
       for (let i = 0; i < action.length; i++) {
         newList.push({
-          value:getRandomValue(10000),
+          value:getRandomValue(1000),
           color:randomColor()
         })
       }
