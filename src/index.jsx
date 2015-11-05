@@ -1,4 +1,3 @@
-import 'babel-core/polyfill' // Får Object.assign att lira i applikationen
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'

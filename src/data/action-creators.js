@@ -10,7 +10,6 @@ export function randomize(length){
 
 export const SORTLIST = 'SORTLIST' //Man brukar använda konstanter för att tala om typen på en action.
 export function sortList(){
-  console.log('Action sort')
   return {
     type: SORTLIST
   }

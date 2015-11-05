@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { randomize, sortList } from './data/action-creators'
 import Number from './number'
 import List from './list'
-import {MdAssessment, MdSort} from 'react-icons/lib/md'
-
+import Pushbutton from './pushbutton'
+  
 class App extends Component {
   constructor( props) {
     super(props)
@@ -27,8 +27,8 @@ class App extends Component {
     }
     let tag =  <div style={style}>
                   <h1>Slumpa nummer</h1>
-                  <span onClick={this.handleClick.bind(this)} ><MdAssessment width={40} height={40} style={{fill:'#333'}} /></span>
-                  <span onClick={this.handleSortClick.bind(this)} ><MdSort width={40} height={40} style={{fill:'#333'}} /></span><br/>
+                  <Pushbutton onClick={this.handleClick.bind(this)} type={'random'} />
+                  <Pushbutton onClick={this.handleSortClick.bind(this)} type={'sort'} /><br/>
                   <List content={this.props.state.list} />
                 </div>
     return tag;
