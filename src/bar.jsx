@@ -1,17 +1,16 @@
 //Skapar en div som är value bred med slumpad färg
 import React from 'react'
 
-export default ({value, color}) => {
+export default ({value, color, index}) => {
   let style = {
     display: 'inline-block',
-    backgroundColor: color,
+    fill: color,
+    stroke: 'transparent',
     width: value + 'px',
     position: 'absolute',
     left: '100px'
   }
   return (
-  <div style={style}>
-      &nbsp;
-    </div>
+    <rect x={40} y={10*index+10} width={value} height={8} style={style} />
   )
 }
