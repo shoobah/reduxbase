@@ -11,6 +11,6 @@ export default ({value, color, index}) => {
     left: '100px'
   }
   return (
-    <rect x={40} y={10*index+10} width={value} height={8} style={style} />
+    <rect x={40} y={15*index+10} width={value} height={12} style={style} />
   )
 }
