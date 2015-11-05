@@ -34,6 +34,11 @@ function reducer (state = initialState, action) {
           value:getRandomValue(1000),
           color:randomColor()
         })
+        newList.sort((a,b) => {
+          if(a.value > b.value) return 1
+          if(a.value === b.value) return 0
+          if(a.value < b.value) return -1
+        })
       }
       return Object.assign({}, state, {
         list: newList
