@@ -1,28 +1,33 @@
-import React, { Component } from 'react'
+/// <reference path="../typings/redux/redux.d.ts" />
+/// <reference path="../typings/react/react-global.d.ts" />
+/// <reference path="../typings/redux/react-redux.d.ts" />
+/// <reference path="../typings/app.d.ts" />
+
+import * as React from 'react'
 import { connect } from 'react-redux'
 import { randomize } from './data/action-creators'
 import Number from './number'
 import List from './list'
 import MdAssessment from 'react-icons/lib/md/assessment'
 
-class App extends Component {
-  constructor( props) {
-    super(props),
-    this.iObj= {}
-  }
+interface Props {}
+interface State {}
 
-  handleClick(){
-    this.props.randomize(30);
+class App extends React.Component<Props, State> {
+  private iObj: Object;
+
+  public handleClick(){
+    Props.randomize(30);
   }
   
-  handleStopClick(){
-    clearInterval(this.iObj);
+  public handleStopClick(){
+    clearInterval(iObj);
   }
 
-  componentDidMount(){
+  public componentDidMount(){
   }
 
-  render() {
+  public render() {
     let style={
       fontFamily: 'arial'
     }

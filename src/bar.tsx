@@ -1,5 +1,6 @@
+/// <reference path="../typings/redux/redux.d.ts" />
 //Skapar en div som är value bred med slumpad färg
-import React from 'react'
+import * as React from 'react'
 
 export default ({value, color, index}) => {
   let style = {

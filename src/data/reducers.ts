@@ -1,3 +1,6 @@
+/// <reference path="../../typings/redux/redux.d.ts" />
+/// <reference path="../../typings/react/react-global.d.ts" />
+/// <reference path="../../typings/redux/react-redux.d.ts" />
 import { RANDOMIZE } from './action-creators'
 import {compose, createStore, applyMiddelware} from 'redux'
 import {devTools, persistState} from 'redux-devtools'
