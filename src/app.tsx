@@ -10,7 +10,12 @@ import Number from './number'
 import List from './list'
 import MdAssessment from 'react-icons/lib/md/assessment'
 
-interface Props {}
+interface Props {
+  randomize: Function;
+  state: {
+    list: Array<any>
+  }
+}
 interface State {}
 
 class App extends React.Component<Props, State> {
